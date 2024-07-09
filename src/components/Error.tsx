@@ -1,5 +1,9 @@
-import { ErrorComponentProps } from "@tanstack/react-router";
+import { useRouteError } from "react-router-dom";
 
-export default function Error({ error }: ErrorComponentProps) {
-  return <div>Error: {error.message}</div>;
+export default function Error() {
+  const error = useRouteError();
+
+  console.error(error);
+
+  return <div>Error: {JSON.stringify(error)}</div>;
 }

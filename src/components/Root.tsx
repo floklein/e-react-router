@@ -1,10 +1,4 @@
 import {
-  Link,
-  Outlet,
-  ScrollRestoration,
-  useRouterState,
-} from "@tanstack/react-router";
-import {
   AppBar,
   IconButton,
   LinearProgress,
@@ -14,11 +8,15 @@ import {
 } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import User from "./User";
+import {
+  Link,
+  Outlet,
+  ScrollRestoration,
+  useNavigation,
+} from "react-router-dom";
 
 export default function Root() {
-  const loading = useRouterState({
-    select: (state) => state.status === "pending",
-  });
+  const loading = useNavigation().state === "loading";
 
   return (
     <>

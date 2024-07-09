@@ -1,4 +1,3 @@
-import { getRouteApi, Link } from "@tanstack/react-router";
 import {
   Accordion,
   AccordionDetails,
@@ -16,11 +15,10 @@ import {
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { ExpandMore } from "@mui/icons-material";
-
-const cartRoute = getRouteApi("/cart");
+import { Link, useLoaderData } from "react-router-dom";
 
 export default function Cart() {
-  const carts = cartRoute.useLoaderData();
+  const carts = useLoaderData();
 
   return (
     <Container>

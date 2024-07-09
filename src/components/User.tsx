@@ -7,12 +7,11 @@ import {
 } from "@mui/material";
 import { Login } from "@mui/icons-material";
 import { useAuth } from "../zustand/auth";
-import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
+import { Link, useRevalidator } from "react-router-dom";
 
 export default function User() {
-  const router = useRouter();
-  const navigate = useNavigate();
+  const revalidator = useRevalidator();
 
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const firstName = useAuth((state) => state.user?.firstName);
@@ -33,8 +32,7 @@ export default function User() {
   const handleLogout = async () => {
     closeMenu();
     logout();
-    await router.invalidate();
-    await navigate({ to: "/" });
+    revalidator.revalidate();
   };
 
   return isAuthenticated ? (

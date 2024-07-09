@@ -1,4 +1,3 @@
-import { getRouteApi, Link } from "@tanstack/react-router";
 import {
   Box,
   Button,
@@ -10,16 +9,15 @@ import {
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Masonry } from "@mui/lab";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Image = styled("img")({
   objectFit: "contain",
   display: "block",
 });
 
-const productRoute = getRouteApi("/product/$productId");
-
 export default function Product() {
-  const product = productRoute.useLoaderData();
+  const product = useLoaderData();
 
   const previous = product.id - 1;
   const next = product.id + 1;
